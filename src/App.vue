@@ -31,7 +31,7 @@ export default {
           if(m!=item) {
             // 重置音频的进度
             item.state=-1;
-            document.querySelector("."+item.elclass+" .bar").style='';
+            document.querySelector("."+item.elclass+" .bar").style.transform='rotate(0deg)';
           }
       })
     }

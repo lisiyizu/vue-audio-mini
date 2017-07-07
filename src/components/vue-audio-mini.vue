@@ -185,7 +185,7 @@
                */
               process = (audioObj.currentTime / audioObj.duration) * 360;
                 parseInt(process) === 180 && vm.addClass(audiomini, "gt50");
-                bar.style="transform:rotate("+(process)+"deg)";
+                bar.style.transform="rotate("+(process)+"deg)";
             },
             "pause":function(){
               vm.removeClass(circleProgress,"rotate");
@@ -193,7 +193,7 @@
             "ended":function(){
               vm.removeClass(circleProgress,"rotate");
               vm.removeClass(audiomini,"gt50");
-              bar.style="transform:rotate(0deg)";
+              bar.style.transform="rotate(0deg)";
             }
           }
         });
