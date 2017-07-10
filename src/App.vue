@@ -15,7 +15,7 @@ export default {
         elid:"audio-ctr-1",
         elclass:"audio-ctr-1",
         state:-1,
-        src:"http://oot79f1a9.bkt.clouddn.com/test1.mp3"
+        src:"http://lisiyizu.github.io/%E4%B9%8C%E5%85%8B%E4%B8%BD%E4%B8%BD.mp3"
       },{
         
         elid:"audio-ctr-2",

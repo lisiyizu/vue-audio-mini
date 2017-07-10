@@ -72,17 +72,41 @@
 .audiomini.gt50 .fill{/*当进度超过50%时，让fill旋转180度填充50%*/
   transform: rotate(180deg);
 }
+.loadingDiv{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index:1;
+   background-color:rgba(255, 255, 253, .6); 
+}
+.loadingAnimate {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-repeat:no-repeat;
+    background-position:center;
+    z-index:2;
+    background-image:url("../assets/loading.gif")
+  }
 </style>
 <template>
 <div class="circleProgress_wrapper" :class='model.elclass' @click='toggleAudio'>
+  <div v-show='loading' class='loadingDiv'></div>
+  <div v-show='loading' class="loadingAnimate"></div>
   <div :id="model.elid" class="audiomini">
     <div class="bar pre50"></div>
     <div class="fill"></div>
   </div>
+  
 </div>  
 </template>
 <script>
     export default {
+      data(){
+        return {
+            loading:false
+        }
+      },
       name:"vue-audio-mini",
       props:{
             model:{
@@ -173,11 +197,28 @@
             "play": function(){
               vm.addClass(circleProgress, "rotate");
             },
+            "waiting":function(){
+                console.log("正在加载进度。。waiting");
+                vm.loading = true;
+            },
             "timeupdate": function() {
-              if(vm.model.state==-1) {
-                            bar.style="";
-                            return;
+
+              console.log(audioObj.currentTime);
+
+              console.log(audioObj.readyState);
+
+              if(audioObj.readyState==4){
+                vm.loading = false;
+              }else if(audioObj.readyState==2) {
+                vm.loading = true;
               }
+
+              if(vm.model.state==-1) {
+                  bar.style="";
+                  vm.loading = false;
+                  return;
+              }
+
               //监听timeupdate事件，也就是音频当前播放进度发生改变响应的事件
               /**
                *  它们的比正好就是当前播放进度
