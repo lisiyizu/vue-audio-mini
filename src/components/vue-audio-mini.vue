@@ -73,20 +73,21 @@
   transform: rotate(180deg);
 }
 .loadingDiv{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index:1;
-   background-color:rgba(255, 255, 253, .6); 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index:1;
+  border-radius: 100%;
+  background-color:rgba(255, 255, 253, .6); 
 }
 .loadingAnimate {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-repeat:no-repeat;
-    background-position:center;
-    z-index:2;
-    background-image:url("../assets/loading.gif")
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-repeat:no-repeat;
+  background-position:center;
+  z-index:2;
+  background-image:url("../assets/loading.gif")
   }
 </style>
 <template>
@@ -214,7 +215,7 @@
               }
 
               if(vm.model.state==-1) {
-                  bar.style="";
+                  bar.style.transform="rotate(0deg)";
                   vm.loading = false;
                   return;
               }
